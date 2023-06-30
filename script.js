@@ -1,10 +1,10 @@
 window.addEventListener('load', function() {
-    // Fetch the burn overview data from the provided URL
-    fetch('https://api.solscan.io/account/3cdYk6iutMXFceZ7thsoggcLsyuJBgJxmDFuZx4NDtpyjc4hXxFyvn8qpSKCk3grb3zAXFCCucNbAxKL97z3EwF4')
+    // Fetch the burn overview data from the correct API endpoint
+    fetch('https://api.solscan.io/account/3cdYk6iutMXFceZ7thsoggcLsyuJBgJxmDFuZx4NDtpyjc4hXxFyvn8qpSKCk3grb3zAXFCCucNbAxKL97z3EwF4/txs?limit=10&offset=0')
         .then(response => response.json())
         .then(data => {
             // Extract the burn overview from the data
-            const burnOverview = data.account.data[0].parsed.instructions;
+            const burnOverview = data.data;
             
             // Display the burn overview on the webpage
             const burnInfo = document.getElementById('burn-info');
@@ -31,8 +31,8 @@ window.addEventListener('load', function() {
                 const cell1 = document.createElement('td');
                 const cell2 = document.createElement('td');
                 
-                cell1.textContent = burn.transactionSignature;
-                cell2.textContent = burn.parsed.data.value.amount;
+                cell1.textContent = burn.transactionHash;
+                cell2.textContent = burn.receipt.tokensBurned;
                 
                 row.appendChild(cell1);
                 row.appendChild(cell2);
