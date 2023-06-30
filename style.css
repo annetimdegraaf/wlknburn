@@ -1,0 +1,13 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+#burn-info {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
